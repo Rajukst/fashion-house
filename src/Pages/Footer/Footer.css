@@ -1,0 +1,61 @@
+.left-side{
+    text-align: justify;
+
+}
+.iconsFont{
+    padding-top: 15px;
+    padding-bottom: 10px;
+    display: flex;
+
+    justify-content:space-between;
+}
+.account-links a {
+text-decoration: none;
+color: black;
+line-height: 2.5rem;
+
+}
+.account-links{
+    text-align: left;
+}
+.my-account{
+    text-align: left;
+    padding-bottom: 10px;
+    font-weight: bold;
+}
+.choose{
+    text-align: left;
+    padding-bottom: 10px;
+    font-weight: bold;
+}
+.my-desk{
+    display: flex;
+    align-items: center;
+    text-align: left;
+}
+.copyRight{
+text-align: left;
+}
+.footers{
+    background-color: #F2F3F4;
+}
+.news-row{
+    border-bottom: 1px solid #E5E8E8;
+}
+.news-borders{
+    border-right: 1px solid #E5E8E8;
+}
+.news{
+    align-items: center;
+    text-align: left;
+}
+.newss{
+    display: flex;
+    justify-content: center;
+}
+.subScribeButton{
+    border: 1px solid black;
+    background: none;
+    padding: 5px 20px;
+    margin-left: 10px;
+}
