@@ -4,31 +4,16 @@ import "./Footer.css";
 import coverLogo from "../../Images/cover.png";
 import paymentLogo from "../../Images/sslcommerze.png";
 import { Link } from "react-router-dom";
+import UpperFooter from "./UpperFooter";
 const Footer = () => {
   return (
     <>
     <div className="footers">
       <Container>
-      <Row className="news-row pt-4 pb-4">
-            <Col className="news-borders" xs={12} md={6} lg={6}>
-                <div className="news">
-                    <h5>KNOW IT ALL FIRST!</h5>
-                    <p>Never Miss Anything From Multikart By Signing Up To Our Newsletter.</p>
-                </div>
-                </Col>
-            <Col className="news-border p-4" xs={12} md={6} lg={6}>
-                <div className="newss">
-                    <div className="textsInPut">
-                        <input type="text" placeholder="Enter your Email" name="" id="" />
-                    </div>
-                    <button className="subScribeButton">SUBSCRIBE</button>
-                </div>
-                </Col>
-
-        </Row>
-        <Row>
+        <UpperFooter></UpperFooter>
+        <Row className="pt-5">
           <Col xs={12} md={3} lg={3}>
-            <div className="left-side pt-5">
+            <div className="left-side pe-5">
               <img
                 className="img-fluid"
                 src={coverLogo}

@@ -1,6 +1,5 @@
 .left-side{
     text-align: justify;
-
 }
 .iconsFont{
     padding-top: 15px;
@@ -58,4 +57,42 @@ text-align: left;
     background: none;
     padding: 5px 20px;
     margin-left: 10px;
+}
+.subscribers{
+    display: flex;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+input{
+    width: 80%;
+    height: 50px;
+    background: none;
+    border: none;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.021) ;
+    color: rgb(0, 0, 0);
+}
+.subscribers{
+    border-right: 1px solid gainsboro;
+}
+.subscriberse{
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.subscribe-button{
+    border: none;
+    height: 50px;
+    background-color: aqua;
+    border-radius: 10px;
+    padding: 10px 20px;
+}
+.subscribe-container{
+    padding-bottom: 20px;
+    border-bottom: 1px solid gainsboro;
+    padding-top: 20px;
+}
+.mySubscribe h5, h6 {
+    text-align: left;
 }
