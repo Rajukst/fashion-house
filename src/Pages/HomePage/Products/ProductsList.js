@@ -16,6 +16,7 @@ const ProductsList = ({ allProducts }) => {
           <div className="image__title">{name}</div>
           <p className="image__description">{description}</p>
           <button>Order Now</button>
+          
         </div>
       </div>
     </Col>

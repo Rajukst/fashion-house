@@ -14,7 +14,7 @@ const Products = () => {
         dots: false,
         infinite: true,
         speed: 500,
-        slidesToShow: 3,
+        slidesToShow: 5,
         slidesToScroll: 1,
         autoplay: true,
       };
@@ -24,7 +24,7 @@ const Products = () => {
      <h5>Trending Products</h5>
         <Slider {...settings}>
       {
-        productes.map(allProductses=> <ProductsList
+        productes.slice(7,16).map(allProductses=> <ProductsList
         key={allProductses._id}
         allProducts={allProductses}
         ></ProductsList> )
