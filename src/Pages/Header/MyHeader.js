@@ -16,9 +16,7 @@ const MyHeader = () => {
               className="me-auto my-2 my-lg-0"
               style={{ maxHeight: "100px" }}
               navbarScroll
-            >
-              <Link to="/add">Add To Cart</Link>
-              <Link to="/list">List</Link>
+            >       
             </Nav>
             <Form className="d-flex">
               <Form.Control
@@ -34,11 +32,12 @@ const MyHeader = () => {
               <i className="fa-regular fa-heart fa-2x"></i>
               </div>
               <div className="wishList">
-                <Link to="/add-cart"><i className="fa-sharp fa-solid fa-cart-shopping fa-2x"></i></Link>
+                <Link className="me-5" to="/carts"><i className="fa-sharp fa-solid fa-cart-shopping fa-2x "></i><sup>0</sup></Link>
+                
               </div>
             </div>
             {user.email ? (
-                <div> Hi,{user.displayName} <Button onClick={logOut}>LogOut</Button></div> 
+                <div className="ms-5"> Hi,{user.displayName} <Button onClick={logOut}>LogOut</Button></div> 
               ) : (
                 <Link className="class-link" to="/login">
                   Login

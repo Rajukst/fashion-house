@@ -1,15 +1,16 @@
 import React from 'react';
-import HomeProducts from '../HomeProducts/HomeProducts';
-import PartnerGallery from '../PartnerGallery/PartnerGallery';
-import Products from '../Products/Products';
+import DisplayProducts from '../../DisplayProducts/DisplayProducts';
+
 
 const Home = () => {
+
+ 
     return (
         <div>
             <h1>This is Home</h1>
-            <HomeProducts></HomeProducts>
-            <Products></Products>
-            <PartnerGallery></PartnerGallery>
+            <DisplayProducts></DisplayProducts>
+            {/* <Products></Products> */}
+            {/* <PartnerGallery></PartnerGallery> */}
         </div>
     );
 };

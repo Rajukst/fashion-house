@@ -2,8 +2,8 @@ import React from "react";
 import { Col } from "react-bootstrap";
 
 import "./ProductLists.css";
-const ProductsList = ({ allProducts }) => {
-  const { name, image, description, imageTwo } = allProducts;
+const ProductsList = (props) => {
+  const { name, image, description, imageTwo } = props.products;
   return (
     <Col>
       <div className="p-3 image">
@@ -14,9 +14,7 @@ const ProductsList = ({ allProducts }) => {
         />
         <div className="image__overlay">
           <div className="image__title">{name}</div>
-          <p className="image__description">{description}</p>
-          <button>Order Now</button>
-          
+          <button onClick={() => props.addCart(props.products)}> Add To Cart</button>
         </div>
       </div>
     </Col>
