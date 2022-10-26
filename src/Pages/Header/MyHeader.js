@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Nav, Navbar, Container, Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import "./MyHeader.css";
+import CartContext from "../../AllContexts/Cart/CartContext";
 const MyHeader = () => {
+  const {cartItems}= useContext(CartContext)
   const {user, logOut}= useAuth();
   return (
     <div>
@@ -32,8 +34,9 @@ const MyHeader = () => {
               <i className="fa-regular fa-heart fa-2x"></i>
               </div>
               <div className="wishList">
-                <Link className="me-5" to="/carts"><i className="fa-sharp fa-solid fa-cart-shopping fa-2x "></i><sup>0</sup></Link>
-                
+                <Link className="me-5" to="/carts"><i className="fa-sharp fa-solid fa-cart-shopping fa-2x "></i>
+                {cartItems.length>0 && <div><span>{cartItems.length}</span></div>}
+                </Link>
               </div>
             </div>
             {user.email ? (

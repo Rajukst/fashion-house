@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-
-const SingleDisplayProduct = ({products, handleEvent}) => {
+import Rating from '../Ratings/Rating';
+import CartContext from "../../AllContexts/Cart/CartContext"
+const SingleDisplayProduct = ({products}) => {
+const {addToCart}= useContext(CartContext)
     const { name, image, description, imageTwo } = products;
     return (
         <div>
@@ -16,7 +18,10 @@ const SingleDisplayProduct = ({products, handleEvent}) => {
         />
         <div className="image__overlay">
           <div className="image__title">{name}</div>
-          <button onClick={()=>handleEvent(products)}> Add To Cart</button>
+          <div className="rattings">
+            <Rating value={products.rating} text={`${products.numReviews} reviews`}/>
+          </div>
+          <button onClick={()=>addToCart(products)}> Add To Cart</button>
         </div>
       </div>
         </Col>
