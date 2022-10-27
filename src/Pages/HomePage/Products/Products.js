@@ -1,51 +1,41 @@
-import React, { useEffect, useState } from 'react';
-import { Container, Row } from 'react-bootstrap';
-import Slider from 'react-slick';
+import React, { useContext } from 'react';
+import { Col, Container, Row } from 'react-bootstrap';
+import CartContext from '../../../AllContexts/Cart/CartContext';
 import Cart from './Cart';
-import ProductsList from './ProductsList';
+
+
 
 const Products = () => {
-  const [product, setProduct] = useState([])
-  useEffect(() => {
-      fetch("http://localhost:5000/productes")
-          .then(res => res.json())
-          .then(data => setProduct(data))
-  }, [])
-
-  // declaring another useState for Product Component
-  const [handleCart, setHandleCart] = useState([])
-
-  // creating new array using spreed operator
-  const eventHandle = (productItem) => {
-      const cartProduct = [...handleCart, productItem];
-      setHandleCart(cartProduct);
-  }
-    const settings = {
-        dots: false,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 5,
-        slidesToScroll: 1,
-        autoplay: true,
-      };
+const {cartItems, removeItem}= useContext(CartContext);
     return (
-        <Container>
-      <Row className="g-4">
-     <h5>Trending Products</h5>
-        <Slider {...settings}>
-      {
-        product.map(getProduct=> <ProductsList
-        key={getProduct._id}
-        products={getProduct}
-        addCart={eventHandle}
-  
-        ></ProductsList> )
-      } 
-        </Slider>
+      <Container fluid>
+        <Row>
+      <Col className='rowi-one' xs={12} md={8} lg={8}>
+      <Row>
+      {cartItems.length === 0 ? (
+  <h4>Cart is Empty</h4>
+) : (
+  <>
+    {
+      cartItems.map((items, index)=> <Cart
+      key={items._id}
+      cartItem={items}
+      index={index}
+      ></Cart> )
+    }
+  </>
+)}
       </Row>
-    <Cart getCart={handleCart}></Cart>
+      </Col>
+      <Col className='rowi-ones' xs={12} md={4} lg={4}>
+      <h1>This is Right</h1>
+      </Col>
+      </Row>
     </Container>
     );
 };
 
 export default Products;
+
+
+

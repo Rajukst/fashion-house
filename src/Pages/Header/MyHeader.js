@@ -5,13 +5,14 @@ import useAuth from "../../Hooks/useAuth";
 import "./MyHeader.css";
 import CartContext from "../../AllContexts/Cart/CartContext";
 const MyHeader = () => {
-  const {cartItems}= useContext(CartContext)
+  const {cartItems, showHideCart}= useContext(CartContext)
   const {user, logOut}= useAuth();
   return (
     <div>
       <Navbar bg="light" expand="lg">
         <Container>
           <Link to="/">Home</Link>
+          <Link to="/cart">Cart</Link>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav
@@ -31,13 +32,22 @@ const MyHeader = () => {
             </Form>
             <div className="wishAndCart ps-5">
               <div className="wishList pe-5">   
-              <i className="fa-regular fa-heart fa-2x"></i>
+              <i className="fa-regular fa-heart fa-3x"></i>
               </div>
-              <div className="wishList">
-                <Link className="me-5" to="/carts"><i className="fa-sharp fa-solid fa-cart-shopping fa-2x "></i>
-                {cartItems.length>0 && <div><span>{cartItems.length}</span></div>}
-                </Link>
-              </div>
+              <div className='nav__right'>
+                </div>
+        <div className='cart__icon me-5'>
+          <i
+            className='fa fa-shopping-cart fa-3x'
+            aria-hidden='true'
+            onClick={showHideCart}
+          />
+          {cartItems.length > 0 && (
+            <div className='item__count'>
+              <span>{cartItems.length}</span>
+            </div>
+          )}
+        </div>
             </div>
             {user.email ? (
                 <div className="ms-5"> Hi,{user.displayName} <Button onClick={logOut}>LogOut</Button></div> 

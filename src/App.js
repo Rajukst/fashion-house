@@ -6,6 +6,8 @@ import './App.css';
 import Footer from './Pages/Footer/Footer';
 import MyHeader from './Pages/Header/MyHeader';
 import Home from './Pages/HomePage/Home/Home';
+import Cart from './Pages/HomePage/Products/Cart';
+import Products from './Pages/HomePage/Products/Products';
 
 import ProductsList from './Pages/HomePage/Products/ProductsList';
 import List from './Pages/List/List';
@@ -20,6 +22,7 @@ function App() {
     <div className="App">
      <BrowserRouter>
      <MyHeader></MyHeader>
+     <ShopCart></ShopCart>
      <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<ProductsList />} />
@@ -33,7 +36,7 @@ function App() {
       />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Registration />} />
-        <Route path="/carts"  element={<ShopCart/>} />
+        <Route path="/cart" element={<Products/>}/>
       </Routes>
       <Footer></Footer>
      </BrowserRouter>

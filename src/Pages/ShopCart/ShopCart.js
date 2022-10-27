@@ -1,13 +1,21 @@
 import React, { useEffect, useState, useContext } from "react";
+import { Link } from "react-router-dom";
 import CartContext from "../../AllContexts/Cart/CartContext";
+import CartItem from "./CartItem";
 
+import "./ShopCart.css"
 const ShopCart = () => {
   const {showCart, cartItems, showHideCart}= useContext(CartContext)
-  
+  let initialAmount = 0;
+  let productCount = '';
+  for (let newAmount of cartItems) {
+      initialAmount = initialAmount + parseInt(newAmount.price);
+      productCount = productCount + newAmount.name;
+  }
   return (
     <div className="shop">
       {showCart && (
-        <div className="showMyCart">
+        <div className='cart__wrapper'>
           <div style={{ textAlign: "right" }}>
             <i
               style={{ cursor: "pointer" }}
@@ -22,15 +30,21 @@ const ShopCart = () => {
             ) : (
               <ul>
                 {cartItems.map((item) => (
-                  <CartI
+                  <CartItem key={item._id} item={item} />
                 ))}
               </ul>
             )}
           </div>
-          <div>Cart Total</div>
+          <div className='Cart__cartTotal'>
+            <div>Cart Total</div>
+            <div></div>
+            <div style={{ marginLeft: 5 }}>
+              {initialAmount}
+            </div>
+          </div>
+          <Link to="/cart"><button>View Cart</button></Link>
         </div>
       )}
-      <h1>This is Shop</h1>
     </div>
   );
 };

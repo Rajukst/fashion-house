@@ -1,22 +1,36 @@
-import React from 'react';
-
-const Cart = (props) => {
-    const {getCart}= props;
-    console.log(getCart);
-    let initialAmount = 0;
-    let productCount = '';
-    for (let newAmount of getCart) {
-        initialAmount = initialAmount + parseInt(newAmount.price);
-        productCount = productCount + newAmount.name
-        console.log(initialAmount)
-    }
-    return (
-        <div>
-             <h1> Your Cart Summary</h1>
-            <h3> Total Product Added: {props.getCart.length} </h3>
-            <h4> Total Cost: {initialAmount}</h4>
+import React, { useContext } from "react";
+import { Col } from "react-bootstrap";
+import CartContext from "../../../AllContexts/Cart/CartContext";
+import "./Cart.css";
+const Cart = ({ cartItem }) => {
+  const { removeItem } = useContext(CartContext);
+  return (
+    <>
+      <Col xs={12} md={12} lg={12}>
+        <div className="cart-holder">
+          <div className="loaders">
+            <div className="details-holder">
+              <img
+                className="image__img img-fluid my-images"
+                src={`data:image/jpeg;base64,${cartItem.image}`}
+                style={{ maxHeight: "50px", maxWidth: "50px" }}
+                alt="dynamic-image"
+              />
+              <p>Name: {cartItem.name}</p>
+              <p>Price: {cartItem.price} </p>
+              <p>Description: {cartItem.description.slice(0,20)}</p>
+              <button
+                className="CartItem__button"
+                onClick={() => removeItem(cartItem._id)}
+              >
+                Remove
+              </button>
+            </div>
+          </div>
         </div>
-    );
+      </Col>
+    </>
+  );
 };
 
 export default Cart;

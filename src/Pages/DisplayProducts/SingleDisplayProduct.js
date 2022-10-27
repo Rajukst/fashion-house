@@ -3,7 +3,11 @@ import { Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Rating from '../Ratings/Rating';
 import CartContext from "../../AllContexts/Cart/CartContext"
+import formatCurrency from 'format-currency';
+
+
 const SingleDisplayProduct = ({products}) => {
+  let opts = { format: "%s%v", symbol: "€" };
 const {addToCart}= useContext(CartContext)
     const { name, image, description, imageTwo } = products;
     return (
@@ -18,6 +22,9 @@ const {addToCart}= useContext(CartContext)
         />
         <div className="image__overlay">
           <div className="image__title">{name}</div>
+          <div className='ProductCard__price'>
+          <h5>{formatCurrency(`${products.price}`, opts)}</h5>
+        </div>
           <div className="rattings">
             <Rating value={products.rating} text={`${products.numReviews} reviews`}/>
           </div>
