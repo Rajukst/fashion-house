@@ -25,7 +25,7 @@ const {addToCart}= useContext(CartContext)
           <div className='ProductCard__price'>
         </div>
           <div className="rattings">
-            <Rating value={products.rating} text={`${products.numReviews} reviews`}/>
+        
           </div>
           <button onClick={()=>addToCart(products)}> Add To Cart</button>
         </div>

@@ -1,15 +1,16 @@
 import React, { useContext } from "react";
 import { Col, Container, Row } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import CartContext from "../../../AllContexts/Cart/CartContext";
 import Cart from "./Cart";
-
+import "./Product.css"
 const Products = () => {
   const { cartItems, removeItem } = useContext(CartContext);
+  console.log(cartItems);
   return (
-    <Container fluid>
+    <Container>
       <Row>
-        <Col className="rowi-one" xs={12} md={8} lg={8}>
-          <Row>
+        <Col className="rowi-one">
             {cartItems.length === 0 ? (
               <h4>Your Cart is Empty</h4>
             ) : (
@@ -19,11 +20,11 @@ const Products = () => {
                 ))}
               </>
             )}
-          </Row>
         </Col>
-        <Col className="rowi-ones" xs={12} md={4} lg={4}>
-          <h1>This is Right</h1>
-        </Col>
+        <div className="allButtons">
+          <button className="contShopping">Continue Shopping</button>
+          <Link to="/checkout"><button>Checkout</button></Link>
+        </div>
       </Row>
     </Container>
   );

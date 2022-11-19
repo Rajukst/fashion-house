@@ -7,6 +7,7 @@ import Footer from './Pages/Footer/Footer';
 import MyHeader from './Pages/Header/MyHeader';
 import Home from './Pages/HomePage/Home/Home';
 import Cart from './Pages/HomePage/Products/Cart';
+import Checkout from './Pages/HomePage/Products/Checkout/Checkout';
 import Products from './Pages/HomePage/Products/Products';
 
 import ProductsList from './Pages/HomePage/Products/ProductsList';
@@ -31,6 +32,14 @@ function App() {
         element={
           <PrivateRoute>
             <List/>
+          </PrivateRoute>
+        }
+      />
+        <Route
+        path="/checkout"
+        element={
+          <PrivateRoute>
+            <Checkout/>
           </PrivateRoute>
         }
       />

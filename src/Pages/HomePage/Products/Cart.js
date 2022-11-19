@@ -13,7 +13,7 @@ const Cart = ({ cartItem }) => {
               <img
                 className="image__img img-fluid my-images"
                 src={`data:image/jpeg;base64,${cartItem.image}`}
-                style={{ maxHeight: "50px", maxWidth: "50px" }}
+                style={{ maxHeight: "70px", maxWidth: "70px" }}
                 alt="dynamic-image"
               />
               <p>Name: {cartItem.name}</p>
