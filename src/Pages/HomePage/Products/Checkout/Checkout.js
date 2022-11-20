@@ -4,26 +4,26 @@ import { Container, Row, Col } from "react-bootstrap";
 import CartContext from "../../../../AllContexts/Cart/CartContext";
 import "./Checkout.css";
 const Checkout = () => {
-    const {cartItems}= useContext(CartContext);
-    let initialAmount = 0;
-    let productCount = '';
-    let vat= 8;
-    for (let newAmount of cartItems) {
-        initialAmount = initialAmount + parseInt(newAmount.price);
-        productCount = productCount + newAmount.name;
-    }
-    console.log(initialAmount);
-    const subtotal = initialAmount/100*vat;
-    console.log(subtotal);
-    const grandTotal = initialAmount+subtotal;
-    console.log(grandTotal);
+  const { cartItems } = useContext(CartContext);
+  let initialAmount = 0;
+  let productCount = "";
+  let vat = 8;
+  for (let newAmount of cartItems) {
+    initialAmount = initialAmount + parseInt(newAmount.price);
+    productCount = productCount + newAmount.name;
+  }
+  console.log(initialAmount);
+  const subtotal = (initialAmount / 100) * vat;
+  console.log(subtotal);
+  const grandTotal = initialAmount + subtotal;
+  console.log(grandTotal);
   return (
     <div>
       <Container>
         <form>
-        <Row>
-          <Col xs={12} md={7} lg={7}>
-            <h2>Billing Details</h2>
+          <Row>
+            <Col xs={12} md={7} lg={7}>
+              <h2>Billing Details</h2>
               <div className="namingList">
                 <div className="firstName">
                   <h6>Name</h6>
@@ -54,43 +54,56 @@ const Checkout = () => {
                 </div>
               </div>
               <div className="namingList">
-              <div className="state">
-                <h6>State</h6>
-                <input className="state" type="text" name="" id="" />
+                <div className="state">
+                  <h6>State</h6>
+                  <input className="state" type="text" name="" id="" />
+                </div>
+                <div className="state">
+                  <h6>City</h6>
+                  <input className="state" type="text" name="" id="" />
+                </div>
+                <div className="state">
+                  <h6>Street Address</h6>
+                  <input className="state" type="text" name="" id="" />
+                </div>
+                <div className="states">
+                  <h6>Postal Code</h6>
+                  <input className="state" type="text" name="" id="" />
+                </div>
               </div>
-              <div className="state">
-                <h6>City</h6>
-                <input className="state" type="text" name="" id="" />
+            </Col>
+            <Col>
+              <div className="head-corner">
+                <div className="myPlaceOrder">
+                  <div className="placeOrdre">
+                    <h5>Item Name</h5>
+                    <h5>Price</h5>
+                  </div>
+                  {cartItems.map((SinglePlaceOrder) => (
+                    <div className="placeOrdr">
+                      <h6>{SinglePlaceOrder.name}</h6>
+                      <h6>{SinglePlaceOrder.price}</h6>
+                    </div>
+                  ))}
+                </div>
+                <div className="placeOrdre">
+                  <h5>Subtotal: </h5>
+                  <h5>
+                    <span className="subAmount">{initialAmount}/=</span>
+                  </h5>
+                </div>
               </div>
-              <div className="state">
-                <h6>Street Address</h6>
-                <input className="state" type="text" name="" id="" />
+              <div className="placeOrdre">
+                <label className="toggler-wrapper style-1">
+                  <input type="checkbox" />
+                  <div className="toggler-slider">
+                    <div className="toggler-knob"></div>
+                  </div>
+                  <h5 className="freeShipping">Place</h5>
+                </label>
               </div>
-              <div className="states">
-                <h6>Postal Code</h6>
-                <input className="state" type="text" name="" id="" />
-              </div>
-              </div> 
-          </Col>
-          <Col>
-    <div className="myPlaceOrder">
-    <div className="placeOrdre">
-            <h5>Item Name</h5>
-            <h5>Price</h5>
-        </div>
-        {
-            cartItems.map(SinglePlaceOrder=>  
-                <div className="placeOrdr">
-                <h6>{SinglePlaceOrder.name}</h6>
-                <h6>{SinglePlaceOrder.price}</h6>
-            </div>
-                )
-        }
-    </div>
-    <h5>Total Amount: {initialAmount}</h5>
-    <h5>Total Amount: {grandTotal}</h5>
-          </Col>
-        </Row>
+            </Col>
+          </Row>
         </form>
       </Container>
     </div>
@@ -98,3 +111,10 @@ const Checkout = () => {
 };
 
 export default Checkout;
+{
+  /* <h5>Total Amount: {initialAmount}</h5> */
+}
+
+{
+  /* <h5>Total Amount: {grandTotal}</h5> */
+}
