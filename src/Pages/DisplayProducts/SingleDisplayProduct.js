@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { Col } from 'react-bootstrap';
-
-import Rating from '../Ratings/Rating';
+import { Link } from 'react-router-dom';
 import CartContext from "../../AllContexts/Cart/CartContext"
 
 
@@ -9,7 +8,7 @@ import CartContext from "../../AllContexts/Cart/CartContext"
 const SingleDisplayProduct = ({products}) => {
 
 const {addToCart}= useContext(CartContext)
-    const { name, image, description, imageTwo } = products;
+    const { _id, name, image, description, imageTwo } = products;
     return (
         <div>
         <Col>
@@ -28,6 +27,7 @@ const {addToCart}= useContext(CartContext)
         
           </div>
           <button onClick={()=>addToCart(products)}> Add To Cart</button>
+          <Link to={`/view/${_id}`}><button>view</button></Link>
         </div>
       </div>
         </Col>

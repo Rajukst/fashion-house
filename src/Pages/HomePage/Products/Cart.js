@@ -21,7 +21,9 @@ const Cart = ({ cartItem }) => {
               <p>Description: {cartItem.description.slice(0,20)}</p>
               <button
                 className="CartItem__button"
-                onClick={() => removeItem(cartItem._id)}
+                onClick={() => removeItem(cartItem._id)
+                
+                }
               >
                 Remove
               </button>

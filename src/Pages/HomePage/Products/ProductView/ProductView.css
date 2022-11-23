@@ -1,0 +1,13 @@
+.priceSection{
+    border-bottom: 1px dashed lightgray;
+    padding-bottom: 15px;
+}
+.buttonsCarts button{
+    justify-content: space-between;
+    border: none;
+    margin-left: 25px;
+}
+.buttonsCarts{
+    border-bottom: 1px dashed lightgray;
+    padding-bottom: 20px;
+}

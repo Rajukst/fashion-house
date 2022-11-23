@@ -11,6 +11,7 @@ import Checkout from './Pages/HomePage/Products/Checkout/Checkout';
 import Products from './Pages/HomePage/Products/Products';
 
 import ProductsList from './Pages/HomePage/Products/ProductsList';
+import ProductView from './Pages/HomePage/Products/ProductView/ProductView';
 import List from './Pages/List/List';
 import Login from './Pages/Login/Login';
 import PrivateRoute from './Pages/PrivateRoute/PrivateRoute';
@@ -43,6 +44,9 @@ function App() {
           </PrivateRoute>
         }
       />
+      <Route path="view">
+        <Route path=":userId" element={<ProductView />} />
+      </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Registration />} />
         <Route path="/cart" element={<Products/>}/>

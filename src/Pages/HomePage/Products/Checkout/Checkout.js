@@ -1,10 +1,24 @@
 import React from "react";
+import { useState } from "react";
+import { useRef } from "react";
 import { useContext } from "react";
 import { Container, Row, Col } from "react-bootstrap";
+import Swal from "sweetalert2";
 import CartContext from "../../../../AllContexts/Cart/CartContext";
 import "./Checkout.css";
+
 const Checkout = () => {
+
+  // using useRef to getharing my data;
+  const custoName = useRef();
+  const phoneNum = useRef();
+  const cusEmail = useRef();
+  const custCountry = useRef();
+  const custState = useRef();
+  const custCity = useRef();
+  const custPostal = useRef();
   const { cartItems } = useContext(CartContext);
+  console.log(cartItems);
   let initialAmount = 0;
   let productCount = "";
   let vat = 8;
@@ -17,58 +31,135 @@ const Checkout = () => {
   console.log(subtotal);
   const grandTotal = initialAmount + subtotal;
   console.log(grandTotal);
+  const submitData = (e) => {
+    e.preventDefault();
+    const name = custoName.current.value;
+    const phone = phoneNum.current.value;
+    const email = cusEmail.current.value;
+    const country = custCountry.current.value;
+    const state = custState.current.value;
+    const city = custCity.current.value;
+    const postal = custPostal.current.value;
+    const totalOrderDetails = {
+      name,
+      phone,
+      email,
+      country,
+      state,
+      city,
+      postal,
+      cartItems
+    };
+    console.log(totalOrderDetails);
+// const orderInformation= {cartItems}
+    fetch("http://localhost:5000/orderInfo", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(totalOrderDetails),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+          })
+          
+          Toast.fire({
+            icon: 'success',
+            title: 'Order received'
+          });
+          e.target.reset();
+          console.log(data);
+        }
+      });
+  };
+
   return (
     <div>
       <Container>
-        <form>
+        <form onSubmit={submitData}>
           <Row>
             <Col xs={12} md={7} lg={7}>
               <h2>Billing Details</h2>
               <div className="namingList">
                 <div className="firstName">
                   <h6>Name</h6>
-                  <input type="name" name="" id="" />
+                  <input type="text" name="" id="" ref={custoName} required />
                 </div>
                 <div className="phone">
                   <h6>Phone Number</h6>
-                  <input type="name" name="" id="" />
+                  <input type="text" name="" id="" ref={phoneNum} required />
                 </div>
                 <div className="email">
                   <h6>Email</h6>
-                  <input type="email" name="" id="" />
+                  <input type="email" name="" id="" ref={cusEmail} />
                 </div>
               </div>
               <div className="namingList">
                 <h6>Country</h6>
                 <div class="select">
-                  <select name="format" id="format">
+                  <select ref={custCountry} name="format" id="format">
                     <option selected disabled>
                       Choose your Country
                     </option>
-                    <option value="bd">Bangladesh</option>
-                    <option value="ind">India</option>
-                    <option value="pk">Pakisthan</option>
-                    <option value="np">Nepal</option>
-                    <option value="vt">Vutan</option>
+                    <option defaultValue="bd">Bangladesh</option>
+                    <option defaultValue="ind">India</option>
+                    <option defaultValue="pk">Pakisthan</option>
+                    <option defaultValue="np">Nepal</option>
+                    <option defaultValue="vt">Vutan</option>
                   </select>
                 </div>
               </div>
               <div className="namingList">
                 <div className="state">
                   <h6>State</h6>
-                  <input className="state" type="text" name="" id="" />
+                  <input
+                    className="state"
+                    type="text"
+                    name=""
+                    id=""
+                    ref={custState}
+                  />
                 </div>
                 <div className="state">
                   <h6>City</h6>
-                  <input className="state" type="text" name="" id="" />
+                  <input
+                    className="state"
+                    type="text"
+                    name=""
+                    id=""
+                    ref={custCity}
+                  />
                 </div>
                 <div className="state">
                   <h6>Street Address</h6>
-                  <input className="state" type="text" name="" id="" />
+                  <input
+                    className="state"
+                    type="text"
+                    name=""
+                    id=""
+                    ref={custState}
+                  />
                 </div>
                 <div className="states">
                   <h6>Postal Code</h6>
-                  <input className="state" type="text" name="" id="" />
+                  <input
+                    className="state"
+                    type="text"
+                    name=""
+                    id=""
+                    ref={custPostal}
+                  />
                 </div>
               </div>
             </Col>
@@ -102,6 +193,7 @@ const Checkout = () => {
                   <h5 className="freeShipping">Place</h5>
                 </label>
               </div>
+              <button type="submit">Place Order</button>
             </Col>
           </Row>
         </form>
@@ -111,10 +203,3 @@ const Checkout = () => {
 };
 
 export default Checkout;
-{
-  /* <h5>Total Amount: {initialAmount}</h5> */
-}
-
-{
-  /* <h5>Total Amount: {grandTotal}</h5> */
-}
