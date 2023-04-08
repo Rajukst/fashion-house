@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
@@ -15,14 +15,13 @@ import {
     MagnifierZoom,
     MagnifierPreview
   } from "react-image-magnifiers";
+import CartContext from "../../../../AllContexts/Cart/CartContext";
 const ProductView = () => {
-    //image magnifier
-
-    //finish
-  const { userId } = useParams();
+  const {addToCart}= useContext(CartContext)
+  const { id } = useParams();
   const [viewProduct, setViewProduct] = useState({});
   useEffect(() => {
-    fetch(`http://localhost:5000/productInfo/${userId}`)
+    fetch(`https://fashion-house-server.vercel.app/products/${id}`)
       .then((res) => res.json())
       .then((data) => setViewProduct(data));
   }, []);
@@ -30,18 +29,13 @@ const ProductView = () => {
     <div>
       <Container>
         <Row>
-          <Col>1 of 1</Col>
           <Col>
-          <GlassMagnifier
-  imageSrc={`data:image/jpeg;base64,${viewProduct.image}`}
-  imageAlt="Example"
-  largeImageSrc="./large-image.jpg" // Optional
-/>
+      <img src={viewProduct.image}alt="" />
      
           </Col>
           <Col>
             <h3>{viewProduct.name}</h3>
-            <h3 className="priceSection">${viewProduct.price}</h3>
+            <h3 className="priceSection">${viewProduct.priceOne}</h3>
             <h6>Select Size</h6>
             <h6>Quantity</h6>
             <div className="buttonsCarts">

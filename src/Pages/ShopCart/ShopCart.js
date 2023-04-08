@@ -9,10 +9,14 @@ const ShopCart = () => {
   let initialAmount = 0;
   let productCount = '';
   for (let newAmount of cartItems) {
-      initialAmount = initialAmount + parseInt(newAmount.price);
+      initialAmount = initialAmount + parseInt(newAmount.priceOne);
       productCount = productCount + newAmount.name;
   }
+  console.log(initialAmount)
+  console.log(cartItems)
   return (
+    <>
+
     <div className="shop">
       {showCart && (
         <div className='cart__wrapper'>
@@ -30,7 +34,7 @@ const ShopCart = () => {
             ) : (
               <ul>
                 {cartItems.map((item) => (
-                  <CartItem key={item._id} item={item} />
+                  <CartItem key={item._id}  item={item} />
                 ))}
               </ul>
             )}
@@ -46,6 +50,7 @@ const ShopCart = () => {
         </div>
       )}
     </div>
+    </>
   );
 };
 

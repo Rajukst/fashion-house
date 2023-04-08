@@ -8,6 +8,8 @@ const Products = () => {
   const { cartItems, removeItem } = useContext(CartContext);
   console.log(cartItems);
   return (
+    <>
+    {/* This is real cart. don't remove it */}
     <Container>
       <Row>
         <Col className="rowi-one">
@@ -27,6 +29,7 @@ const Products = () => {
         </div>
       </Row>
     </Container>
+    </>
   );
 };
 

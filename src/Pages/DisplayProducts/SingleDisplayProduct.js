@@ -16,7 +16,7 @@ const {addToCart}= useContext(CartContext)
     
        <img
           className="image__img img-fluid"
-          src={`data:image/jpeg;base64,${image}`}
+          src={image}
           alt="abc"
         />
         <div className="image__overlay">
@@ -27,7 +27,7 @@ const {addToCart}= useContext(CartContext)
         
           </div>
           <button onClick={()=>addToCart(products)}> Add To Cart</button>
-          <Link to={`/view/${_id}`}><button>view</button></Link>
+          <Link to={`/products/${_id}`}><button>view</button></Link>
         </div>
       </div>
         </Col>

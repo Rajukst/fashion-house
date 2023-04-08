@@ -99,7 +99,7 @@ const useFirebase = () => {
     }, []);
     // verifying user is admin or just a user on client side
     useEffect(()=>{
-  fetch(`http://localhost:5000/users/${user.email}`)
+  fetch(`https://fashion-house-server.vercel.app/users/${user.email}`)
   .then(res=>res.json())
   .then(data=>setAdmin(data.admin))
     },[user.email])
@@ -116,7 +116,7 @@ const useFirebase = () => {
     };
     const saveUser=(email, displayName, method)=>{
       const user= {email, displayName};
-      fetch('http://localhost:5000/users',{
+      fetch('https://fashion-house-server.vercel.app//users',{
         method: method,
         headers:{
           "content-type":"application/json"

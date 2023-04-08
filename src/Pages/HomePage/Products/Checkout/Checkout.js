@@ -23,7 +23,7 @@ const Checkout = () => {
   let productCount = "";
   let vat = 8;
   for (let newAmount of cartItems) {
-    initialAmount = initialAmount + parseInt(newAmount.price);
+    initialAmount = initialAmount + parseInt(newAmount.priceOne);
     productCount = productCount + newAmount.name;
   }
   console.log(initialAmount);
@@ -52,7 +52,7 @@ const Checkout = () => {
     };
     console.log(totalOrderDetails);
 // const orderInformation= {cartItems}
-    fetch("http://localhost:5000/orderInfo", {
+    fetch("https://fashion-house-server.vercel.app/order-info", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -62,22 +62,13 @@ const Checkout = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.insertedId) {
-          const Toast = Swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-              toast.addEventListener('mouseenter', Swal.stopTimer)
-              toast.addEventListener('mouseleave', Swal.resumeTimer)
-            }
-          })
-          
-          Toast.fire({
+          Swal.fire({
+            position: 'center',
             icon: 'success',
-            title: 'Order received'
-          });
+            title: 'Your order has been created',
+            showConfirmButton: false,
+            timer: 1500
+          })
           e.target.reset();
           console.log(data);
         }

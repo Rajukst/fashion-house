@@ -2,10 +2,11 @@ import React, { useContext } from "react";
 import { Col } from "react-bootstrap";
 import CartContext from "../../../AllContexts/Cart/CartContext";
 import "./Cart.css";
-const Cart = ({ cartItem }) => {
+const Cart = ({ cartItem,  }) => {
   const { removeItem } = useContext(CartContext);
   return (
     <>
+  
       <Col xs={12} md={12} lg={12}>
         <div className="cart-holder">
           <div className="loaders">
