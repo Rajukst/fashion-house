@@ -116,7 +116,7 @@ const useFirebase = () => {
     };
     const saveUser=(email, displayName, method)=>{
       const user= {email, displayName};
-      fetch('https://fashion-house-server.vercel.app//users',{
+      fetch('https://fashion-house-server.vercel.app/users',{
         method: method,
         headers:{
           "content-type":"application/json"
