@@ -17,7 +17,7 @@ const DisplayProducts = () => {
            <Container>
            <Row xs={1} md={4} className="g-4">
             {
-                displayProducts.slice(6,25).map(getSingleList=> <SingleDisplayProduct
+                displayProducts.map(getSingleList=> <SingleDisplayProduct
                 key={getSingleList._id}
                 products={getSingleList}
                 ></SingleDisplayProduct> )
